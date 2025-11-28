@@ -4,6 +4,52 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mesh Gradients */
+.mesh-gradient {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cdefs%3E%3ClinearGradient id='gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23FF00FF' /%3E%3Cstop offset='100%25' stop-color='%2300FFFF' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='400' fill='url(%23gradient)' /%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+/* Glassmorphism */
+.glassmorphism {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Noise Texture */
+.noise-texture {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAAAgMAAABinFQ6AAAACVBMVEUAAAD///9fX1/S0ecCAAAAI0lEQVQIW2NgwAfEqwAAAAAA//8AGEwHwAAAAABJRU5ErkJggg==");
+  background-size: 100px;
+  opacity: 0.1;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Hover Effects */
+.hover-scale-up {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-scale-up:hover {
+  transform: scale(1.05);
+}
+
+/* Transition for all properties */
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+
+
 
 
 /* Slim custom scrollbar */

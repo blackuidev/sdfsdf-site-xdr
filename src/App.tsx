@@ -1,6 +1,11 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import HomePage from './pages/HomePage';
+import ProductsPage from './pages/ProductsPage';
+import ProductDetailsPage from './pages/ProductDetailsPage';
+import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -26,6 +31,11 @@ const App = () => (
                 <Layout>
                     <Routes>
                         <Route path="/" element={<Index />} />
+                        <Route path="/home" element={<HomePage />} />
+                        <Route path="/products" element={<ProductsPage />} />
+                        <Route path="/product/:id" element={<ProductDetailsPage />} />
+                        <Route path="/cart" element={<CartPage />} />
+                        <Route path="/checkout" element={<CheckoutPage />} />
                     </Routes>
                 </Layout>
             </BrowserRouter>
