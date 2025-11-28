@@ -1,49 +1,28 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import ProductCard from '../components/ProductCard';
-import { productsData } from '../data/productsData';
-import { NextPage } from 'next';
+import { productsData } from '@/data/productsData';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
-const ProductsPage: NextPage = () => {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1, // Adjust for desired stagger effect
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 50 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
+const ProductsPage = () => {
+  const router = useRouter();
 
   return (
-    <motion.div
-      className="container mx-auto py-8"
-      variants={container}
-      initial="hidden"
-      animate="show"
-    >
-      <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
-        <h1 className="text-3xl font-bold">Our Products</h1>
-        <input
-          type="text"
-          placeholder="Search products..."
-          className="border p-2 rounded w-full md:w-auto"
-        />
-      </div>
-
-      <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="container mx-auto py-8">
+      <h1 className="text-3xl font-semibold mb-4">Our Products</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {productsData.map((product) => (
-          <motion.div key={product.id} variants={item}>
-            <ProductCard product={product} />
-          </motion.div>
+          <Card key={product.id} className="shadow-md">
+            <div className="p-4">
+              <h2 className="text-lg font-semibold mb-2">{product.name}</h2>
+              <p className="text-gray-600">{product.description}</p>
+              <p className="text-blue-500 font-bold mt-2">${product.price}</p>
+              <Button onClick={() => router.push(`/product/${product.id}`)} className="mt-4 w-full">View Details</Button>
+            </div>
+          </Card>
         ))}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 
