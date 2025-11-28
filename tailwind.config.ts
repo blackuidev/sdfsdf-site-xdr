@@ -29,4 +29,12 @@ export default {
 		require("lightswind/plugin"),
 
 	],
+safelist: [
+      'duration-\[200ms\]',
+      'duration-\[50ms\]',
+    ],
+		require("tailwindcss-animate"),
+		require("lightswind/plugin"),
+
+	],
 } satisfies Config;
