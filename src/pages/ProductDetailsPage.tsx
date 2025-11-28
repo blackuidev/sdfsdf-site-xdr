@@ -35,6 +35,32 @@ const products = [
     related: ['1', '2']
   },
 ];
+  {
+    id: '1', name: 'Awesome Shoe', price: 129.99, description: 'This is a fantastic shoe for running and everyday wear.',
+    images: [
+      'https://images.unsplash.com/photo-1542296635-0776e83c2132?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8MTY4NzEwNDQzNw&auto=format&fit=crop&w=500&q=60',
+      'https://images.unsplash.com/photo-1588361035994-295e21daa671?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2hvZXN8ZW58MHx8MHx8MTY4NzEwNDQzNw&auto=format&fit=crop&w=500&q=60',
+      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHNob2VzfGVufDB8fDB8fDE2ODcxMDQ0Mzc&auto=format&fit=crop&w=500&q=60'
+    ],
+    related: ['2', '3']
+  },
+  {
+    id: '2', name: 'Sporty Sneakers', price: 99.99, description: 'Perfect for sports and casual activities.',
+    images: [
+      'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHNob2VzfGVufDB8fDB8fDE2ODcxMDQ0Mzc&auto=format&fit=crop&w=500&q=60',
+      'https://images.unsplash.com/photo-1560769629-975ef6bbefb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHNob2VzfGVufDB8fDB8fDE2ODcxMDQ0Mzc&auto=format&fit=crop&w=500&q=60'
+    ],
+    related: ['1', '3']
+  },
+  {
+    id: '3', name: 'Classic Kicks', price: 79.99, description: 'Timeless design for everyday comfort.',
+    images: [
+      'https://images.unsplash.com/photo-1549298713-244e32c6f818?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHNob2VzfGVufDB8fDB8fDE2ODcxMDQ0Mzc&auto=format&fit=crop&w=500&q=60',
+      'https://images.unsplash.com/photo-1584799459348-634405954999?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHNob2VzfGVufDB8fDB8fDE2ODcxMDQ0Mzc&auto=format&fit=crop&w=500&q=60'
+    ],
+    related: ['1', '2']
+  },
+];
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -65,11 +91,13 @@ const ProductDetailsPage = () => {
         {/* Image Carousel */}
         <div>
           <AspectRatio ratio={1} className="rounded-md overflow-hidden">
-            <img
+            <motion.img
               src={selectedImage}
               alt={product.name}
               className="object-cover w-full h-full cursor-zoom"
               style={{ transition: 'all 0.3s ease' }}
+              whileHover={{ scale: 1.05 }} // Add a slight zoom on hover
+              transition={{ duration: 0.3 }} // Add a smooth transition
             />
           </AspectRatio>
 

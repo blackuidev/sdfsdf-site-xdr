@@ -30,12 +30,13 @@ const App = () => (
             <BrowserRouter>
                 <Layout>
                     <Routes>
-                        <Route path="/" element={<Index />} />
-                        <Route path="/home" element={<HomePage />} />
+                        <Route path="/" element={<HomePage />} />
+                        
                         <Route path="/products" element={<ProductsPage />} />
                         <Route path="/product/:id" element={<ProductDetailsPage />} />
                         <Route path="/cart" element={<CartPage />} />
                         <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Layout>
             </BrowserRouter>

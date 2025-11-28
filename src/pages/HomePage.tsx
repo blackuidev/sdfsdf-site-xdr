@@ -4,8 +4,38 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { formatCurrency } from '@/components/lib/utils';
 
-const HomePage = () => {
+// Placeholder shoe data (replace with real data fetching)
+const shoesData = [
+    {
+        id: '1', name: 'Sneaker Pro', price: 99.99, imageUrl: 'https://images.unsplash.com/photo-1542296637-516355c71b48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHNob2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        description: 'High-performance sneakers for athletes.'
+    },
+    {
+        id: '2', name: 'Casual Walkers', price: 59.99, imageUrl: 'https://images.unsplash.com/photo-1588361505916-ec2ba89ec9a7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHNob2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        description: 'Comfortable shoes for everyday wear.'
+    },
+    {
+        id: '3', name: 'Leather Boots', price: 149.99, imageUrl: 'https://images.unsplash.com/photo-1606107557195-0a29a5b2c539?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHNob2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        description: 'Durable leather boots for all weather conditions.'
+    },
+    {
+        id: '4', name: 'Running Shoes', price: 79.99, imageUrl: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHNob2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        description: 'Lightweight running shoes for optimal performance.'
+    },
+    {
+        id: '5', name: 'Elegant Heels', price: 129.99, imageUrl: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8aGVlbHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+        description: 'Stylish heels for special occasions.'
+    },
+    {
+        id: '6', name: 'Classic Loafers', price: 89.99, imageUrl: 'https://images.unsplash.com/photo-1610475523336-5494742ee47c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGxvYWZlcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+        description: 'Timeless loafers for a sophisticated look.'
+    }
+];
+
+const HomePage: React.FC = () => {
   // Animation variants
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -59,9 +89,21 @@ const HomePage = () => {
                     />
                   </AspectRatio>
                   <CardContent className="p-4">
-                    <h3 className="text-lg font-medium">Product Name</h3>
-                    <p className="text-sm text-muted-foreground">Description of the product goes here.</p>
-                  </CardContent>
+                    <Card className="overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                  <Link to={`/product/${shoesData[index % shoesData.length].id}`}>
+                    <AspectRatio ratio={4 / 3}>
+                      <img
+                        src={shoesData[index % shoesData.length].imageUrl}
+                        alt={shoesData[index % shoesData.length].name}
+                        className="object-cover"
+                      />
+                    </AspectRatio>
+                    <CardContent className="p-4">
+                      <h3 className="text-lg font-medium">{shoesData[index % shoesData.length].name}</h3>
+                      <p className="text-sm text-muted-foreground">{shoesData[index % shoesData.length].description}</p>
+                      <p className="text-sm text-muted-foreground">{formatCurrency(shoesData[index % shoesData.length].price)}</p>
+                    </CardContent>
+                  </Link>
                 </Card>
               </motion.div>
             ))}
@@ -76,6 +118,9 @@ const HomePage = () => {
             <motion.div variants={fadeIn} initial="initial" animate="animate">
               <h2 className="text-3xl font-semibold mb-4">About Our Store</h2>
               <p className="text-gray-700">We are dedicated to providing high-quality shoes that combine style, comfort, and durability. Our mission is to help you find the perfect pair for any occasion.</p>
+              <Button asChild>
+                <Link to="/products">View All Products</Link>
+              </Button>
             </motion.div>
             <motion.div variants={fadeIn} initial="initial" animate="animate">
               <AspectRatio ratio={4 / 3}>
