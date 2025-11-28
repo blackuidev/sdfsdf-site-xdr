@@ -15,7 +15,12 @@ const HomePage = () => {
   };
 
   return (
-    <div className="container mx-auto py-12">
+    <motion.div
+      className="container mx-auto py-12"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
+    >
       {/* Hero Section */}
       <motion.section
         className="text-center mb-16"
@@ -48,7 +53,7 @@ const HomePage = () => {
           <p className="text-gray-600">Description of product 3.</p>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -5,7 +5,9 @@ import { ShoppingCart, Search, Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-const Header: React.FC = () => {
+const Header: React.FC = () =>
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />
+         {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -20,7 +22,7 @@ const Header: React.FC = () => {
       transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: 'easeInOut' }}
+      transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
     >
       <div className="container mx-auto px-4 py-6 flex items-center justify-between">
         {/* Logo */}

@@ -68,6 +68,10 @@ const ProductsPage = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
         >
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
                 <Input

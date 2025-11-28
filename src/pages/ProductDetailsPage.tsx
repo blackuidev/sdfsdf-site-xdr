@@ -10,8 +10,7 @@ import { motion } from 'framer-motion';
 // Placeholder product data (replace with actual data fetching)
 const products = [
   {
-    {
-      id: '1', name: 'Awesome Shoe', price: 129.99, description: 'This is a fantastic shoe for running and everyday wear.',
+     id: '1', name: 'Awesome Shoe', price: 129.99, description: 'This is a fantastic shoe for running and everyday wear',
     images: [
       'https://images.unsplash.com/photo-1542296635-0776e83c2132?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8MTY4NzEwNDQzNw&auto=format&fit=crop&w=500&q=60',
       'https://images.unsplash.com/photo-1588361035994-295e21daa671?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2hvZXN8ZW58MHx8MHx8MTY4NzEwNDQzNw&auto=format&fit=crop&w=500&q=60',
