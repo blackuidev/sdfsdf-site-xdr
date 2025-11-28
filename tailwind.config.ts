@@ -11,6 +11,9 @@ export default {
 	prefix: "",
 	theme: {
 		extend: {
+      duration: {
+        DEFAULT: '150ms'
+      },
 			fontFamily: {
 				// Re-adding the 'inter' font family definition to resolve the error
 				'inter': ['Inter', 'sans-serif']
