@@ -23,10 +23,7 @@ export default {
 			},
 		}
 	}, // The theme now extends the default configuration to include 'font-inter'
-	safelist: [
-    'duration-["200ms"]',
-    'duration-["50ms"]',
-  ],
+	
   plugins: [
 		require("tailwindcss-animate"),
 		require("lightswind/plugin"),
