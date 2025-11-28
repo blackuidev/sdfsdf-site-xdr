@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShoppingCart, Search, Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 const Header: React.FC = () => {
@@ -14,6 +15,9 @@ const Header: React.FC = () => {
   return (
     <motion.header
       className="sticky top-0 z-50 bg-gradient-to-br from-gray-900 to-black text-white shadow-md"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: 'easeInOut' }}
@@ -27,14 +31,19 @@ const Header: React.FC = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden text-white focus:outline-none transition-all duration-300 hover:scale-110 active:scale-95"
+        >
         >
           {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
 
         {/* Navigation Links */}        
-        <nav
+        <motion.nav
           className={`md:flex space-x-6 items-center ${isMenuOpen ? 'block absolute top-full left-0 w-full bg-gray-900 p-4' : 'hidden'}`}
+          initial={{ x: -300, opacity: 0 }}
+          animate={{ x: isMenuOpen ? 0 : -300, opacity: isMenuOpen ? 1 : 0 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
         >
           <NavLink
             to="/products"
@@ -73,7 +82,7 @@ const Header: React.FC = () => {
           <Link to="/cart" className="hover:text-primarylw transition-colors duration-300">
             <ShoppingCart className="h-6 w-6" />
           </Link>
-        </nav>
+        </motion.nav>
       </div>
     </motion.header>
   );

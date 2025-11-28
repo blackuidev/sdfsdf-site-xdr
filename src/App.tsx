@@ -7,6 +7,7 @@ import ProductDetailsPage from './pages/ProductDetailsPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import 'react-toastify/dist/ReactToastify.css';
+import Header from './components/Header/Header';
 
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
     <div className="font-primarylw">
         <QueryClientProvider client={queryClient}>
             <BrowserRouter>
+                <Header />
                 <Layout>
                     <Routes>
                         <Route path="/" element={<HomePage />} />

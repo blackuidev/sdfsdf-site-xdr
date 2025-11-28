@@ -11,6 +11,11 @@ export default {
 	prefix: "",
 	theme: {
 		extend: {
+      colors: {
+        primarylw: '#007bff', // Example primary color
+        // Add other custom colors here if needed
+      },
+
 
 			fontFamily: {
 				// Re-adding the 'inter' font family definition to resolve the error
@@ -18,7 +23,11 @@ export default {
 			},
 		}
 	}, // The theme now extends the default configuration to include 'font-inter'
-	plugins: [
+	safelist: [
+    'duration-[200ms]',
+    'duration-[50ms]',
+  ],
+  plugins: [
 		require("tailwindcss-animate"),
 		require("lightswind/plugin"),
 

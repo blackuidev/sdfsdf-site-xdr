@@ -55,9 +55,11 @@ const HomePage: React.FC = () => {
             <motion.div className="space-y-6" variants={fadeIn} initial="initial" animate="animate">
               <h1 className="text-4xl md:text-5xl font-bold">Step into Style with Every Stride</h1>
               <p className="text-lg text-gray-300">Discover the perfect pair of shoes for every occasion. Quality, comfort, and style combined.</p>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button size="lg" className="bg-primary hover:bg-primary/90 transition-colors duration-300">
                 Explore Collection <ArrowRight className="ml-2" />
               </Button>
+              </motion.div>
             </motion.div>
             <motion.div className="overflow-hidden rounded-lg" variants={fadeIn} initial="initial" animate="animate">
               <AspectRatio ratio={16 / 9}>
@@ -78,7 +80,7 @@ const HomePage: React.FC = () => {
           <h2 className="text-3xl font-semibold text-center mb-8">Featured Products</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Sample Product Cards */}
-            {Array.from({ length: 6 }).map((_, index) => (
+            {shoesData.map((shoe, index) => (
               <motion.div key={index} variants={cardHover} whileHover="whileHover" className="">
                 <Card className="overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                   <AspectRatio ratio={4 / 3}>
@@ -90,24 +92,23 @@ const HomePage: React.FC = () => {
                   </AspectRatio>
                   <CardContent className="p-4">
                     <Card className="overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-                  <Link to={`/product/${shoesData[index % shoesData.length].id}`}>
+                  <Link to={`/product/${shoe.id}`}>
                     <AspectRatio ratio={4 / 3}>
                       <img
-                        src={shoesData[index % shoesData.length].imageUrl}
-                        alt={shoesData[index % shoesData.length].name}
+                        src={shoe.imageUrl}
+                        alt={shoe.name}
                         className="object-cover"
                       />
                     </AspectRatio>
                     <CardContent className="p-4">
-                      <h3 className="text-lg font-medium">{shoesData[index % shoesData.length].name}</h3>
-                      <p className="text-sm text-muted-foreground">{shoesData[index % shoesData.length].description}</p>
-                      <p className="text-sm text-muted-foreground">{formatCurrency(shoesData[index % shoesData.length].price)}</p>
+                      <h3 className="text-lg font-medium">{shoe.name}</h3>
+                      <p className="text-sm text-muted-foreground">{shoe.description}</p>
+                      <p className="text-sm text-muted-foreground">{formatCurrency(shoe.price)}</p>
                     </CardContent>
                   </Link>
                 </Card>
               </motion.div>
-            ))}
-          </div>
+            )}
         </div>
       </section>
 
